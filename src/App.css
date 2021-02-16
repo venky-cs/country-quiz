@@ -18,6 +18,19 @@ body{
 .app .main{
   width: 50vw;
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid transparent;
   border-radius: 12px;
+}
+.heading{
+  position: relative;
+  bottom: 30px;
+  display: flex;
+  justify-content:space-between;
+}
+.heading img{
+  width: 100px;
+}
+.heading .title{
+  text-transform: uppercase;
+  color: white;
 }
