@@ -34,3 +34,6 @@ body{
   text-transform: uppercase;
   color: white;
 }
+ul{
+  list-style-type: none;
+}
