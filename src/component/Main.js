@@ -11,15 +11,31 @@ function Main() {
       setCountry(res.data[randomNumber]);
     });
   }, []);
+
+  let listArray = [
+    state.length > 1 && state[randomNumber + 1].name,
+    state.length > 1 && state[randomNumber + 10].name,
+    state.length > 1 && state[randomNumber + 20].name,
+    country.name,
+  ];
+  const shuffleArray = (arr) => {
+
+    for (let i = 0; i < arr.length; i++) {
+        let rand = Math.floor(Math.random() * arr.length);
+
+        [arr[i], arr[rand]] = [arr[rand], arr[i]];
+
+    }
+    return arr;
+}
   return (
     <div>
       {console.log(state, country)}
       <h3>{country.capital} is the capital of</h3>
       <ul>
-        <li>{state.length >1 && state[randomNumber+1].name}</li>
-        <li>{state.length >1 && state[randomNumber+10].name}</li>
-        <li>{country.name}</li>
-        <li>{state.length >1 && state[randomNumber+20].name}</li>
+        {/* {console.log("Test",shuffleArray(listArray))} */}
+        {shuffleArray(listArray).map((arr) => <li>{arr}</li>
+        )}
       </ul>
     </div>
   );
