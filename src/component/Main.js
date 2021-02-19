@@ -4,6 +4,7 @@ import axios from "axios";
 function Main() {
   const [state, setState] = useState([]);
   const [country, setCountry] = useState({});
+  
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
@@ -34,11 +35,20 @@ function Main() {
       <h3>{country.capital} is the capital of</h3>
       <ul>
         {/* {console.log("Test",shuffleArray(listArray))} */}
-        {shuffleArray(listArray).map((arr) => <li>{arr}</li>
+        {shuffleArray(listArray).map((arr) => <li onClick={check}>{arr}</li>
         )}
       </ul>
     </div>
   );
+
+  function check(e){
+    let value = e.target.innerHTML;
+    if(value === country.name){
+      alert('you are right')
+    }else{
+      alert('wrong answer')
+    }
+  }
 }
 
 export default Main;
