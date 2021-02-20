@@ -19,6 +19,7 @@ function Main() {
     state.length > 1 && state[randomNumber + 20].name,
     country.name,
   ];
+  
   const shuffleArray = (arr) => {
 
     for (let i = 0; i < arr.length; i++) {
@@ -30,14 +31,15 @@ function Main() {
     return arr;
 }
   return (
-    <div>
+    <div className='section'>
       {console.log(state, country)}
       <h3>{country.capital} is the capital of</h3>
-      <ul>
+      <ol type='A'>
         {/* {console.log("Test",shuffleArray(listArray))} */}
-        {shuffleArray(listArray).map((arr) => <li onClick={check}>{arr}</li>
+        {shuffleArray(listArray).map((arr) => <li  
+        onClick={check}>{arr}</li>
         )}
-      </ul>
+      </ol>
     </div>
   );
 
