@@ -4,7 +4,7 @@ import axios from "axios";
 function Main() {
   const [state, setState] = useState([]);
   const [country, setCountry] = useState({});
-  
+
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
@@ -19,36 +19,38 @@ function Main() {
     state.length > 1 && state[randomNumber + 20].name,
     country.name,
   ];
-  
+
   const shuffleArray = (arr) => {
-
     for (let i = 0; i < arr.length; i++) {
-        let rand = Math.floor(Math.random() * arr.length);
+      let rand = Math.floor(Math.random() * arr.length);
 
-        [arr[i], arr[rand]] = [arr[rand], arr[i]];
-
+      [arr[i], arr[rand]] = [arr[rand], arr[i]];
     }
     return arr;
-}
+  };
   return (
-    <div className='section'>
+    <div className="section">
       {console.log(state, country)}
       <h3>{country.capital} is the capital of</h3>
-      <ol type='A'>
+      <ol type="A">
         {/* {console.log("Test",shuffleArray(listArray))} */}
-        {shuffleArray(listArray).map((arr) => <li  
-        onClick={check}>{arr}</li>
-        )}
+        {shuffleArray(listArray).map((arr, index) => (
+          <li id={index} key={index} onClick={check}>
+            {arr}
+          </li>
+        ))}
       </ol>
     </div>
   );
 
-  function check(e){
+  function check(e) {
     let value = e.target.innerHTML;
-    if(value === country.name){
-      alert('you are right')
-    }else{
-      alert('wrong answer')
+    let color = document.getElementById(e.target.id);
+
+    if (value === country.name) {
+      color.style.color = "green";
+    } else {
+      color.style.color = "red";
     }
   }
 }
