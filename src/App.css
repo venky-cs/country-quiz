@@ -61,17 +61,23 @@ body {
   border: 2px solid rgba(96, 102, 208, 0.7);
   box-sizing: border-box;
   border-radius: 12px;
-  margin:20px auto;
+  margin: 20px auto;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 18px;
   color: #6066d0;
-  padding-left:2rem;
+  padding-left: 2rem;
+  cursor: pointer;
 }
-.section ol li::marker{
+.section ol li::marker {
   font-size: 24px;
 }
 
-.find{
-  background-color:red;
+.find {
+  background-color: red;
+}
+
+.section .end{
+  text-align: center;
+  margin: 0 auto;
 }

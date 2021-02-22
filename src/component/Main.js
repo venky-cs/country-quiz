@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import End from './End';
 
 function Main() {
   const [state, setState] = useState([]);
   const [country, setCountry] = useState({});
+
+  const[game,setGame]= useState(0);
+  const [score,setScore]=useState(0);
 
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
@@ -11,7 +15,7 @@ function Main() {
       setState(res.data);
       setCountry(res.data[randomNumber]);
     });
-  }, []);
+  }, [game]);
 
   let listArray = [
     state.length > 1 && state[randomNumber + 1].name,
@@ -29,6 +33,9 @@ function Main() {
     return arr;
   };
   return (
+  <>
+    {
+      (game < 5) ?
     <div className="section">
       {console.log(state, country)}
       <h3>{country.capital} is the capital of</h3>
@@ -41,6 +48,9 @@ function Main() {
         ))}
       </ol>
     </div>
+    : <End score={score}/>
+    }
+    </>
   );
 
   function check(e) {
@@ -49,9 +59,11 @@ function Main() {
 
     if (value === country.name) {
       color.style.color = "green";
+      setScore(prevState => prevState+1)
     } else {
       color.style.color = "red";
     }
+    setGame(prevState => prevState+1)
   }
 }
 
