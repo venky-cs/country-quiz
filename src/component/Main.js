@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import End from './End';
+import End from "./End";
 
 function Main() {
   const [state, setState] = useState([]);
   const [country, setCountry] = useState({});
 
-  const[game,setGame]= useState(0);
-  const [score,setScore]=useState(0);
+  const [game, setGame] = useState(0);
+  const [score, setScore] = useState(0);
 
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
@@ -33,37 +33,47 @@ function Main() {
     return arr;
   };
   return (
-  <>
-    {
-      (game < 5) ?
-    <div className="section">
-      {console.log(state, country)}
-      <h3>{country.capital} is the capital of</h3>
-      <ol type="A">
-        {/* {console.log("Test",shuffleArray(listArray))} */}
-        {shuffleArray(listArray).map((arr, index) => (
-          <li id={index} key={index} onClick={check}>
-            {arr}
-          </li>
-        ))}
-      </ol>
-    </div>
-    : <End score={score}/>
-    }
+    <>
+      {game < 5 ? (
+        <div className="section">
+          {console.log(state, country)}
+          <h3>{country.capital} is the capital of</h3>
+          <ol type="A">
+            {/* {console.log("Test",shuffleArray(listArray))} */}
+            {shuffleArray(listArray).map((arr, index) => (
+              <li id={index} key={index} onClick={check}>
+                {arr}
+              </li>
+            ))}
+          </ol>
+          <button onClick={next}>next</button>
+        </div>
+      ) : (
+        <End score={score} />
+      )}
     </>
   );
 
   function check(e) {
+    e.preventDefault();
     let value = e.target.innerHTML;
-    let color = document.getElementById(e.target.id);
+    console.log("test", e.target);
 
     if (value === country.name) {
-      color.style.color = "green";
-      setScore(prevState => prevState+1)
+      // setScore((prevState) => prevState + 1);
+      e.target.style.color = "green";
     } else {
-      color.style.color = "red";
+      e.target.style.color = "red";
+      // color.style.color = "red";
     }
-    setGame(prevState => prevState+1)
+  }
+
+  function next() {
+    let x = document.querySelectorAll("li");
+    for (let i = 0; i < x.length; i++) {
+      x[i].style.color = "#6066d0";
+    }
+    setGame((prevState) => prevState + 1);
   }
 }
 
