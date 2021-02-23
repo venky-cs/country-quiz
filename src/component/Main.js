@@ -8,6 +8,7 @@ function Main() {
 
   const [game, setGame] = useState(0);
   const [score, setScore] = useState(0);
+  const [validate,setValidate] = useState(false);
 
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
@@ -41,12 +42,14 @@ function Main() {
           <ol type="A">
             {/* {console.log("Test",shuffleArray(listArray))} */}
             {shuffleArray(listArray).map((arr, index) => (
-              <li id={index} key={index} onClick={check}>
+              <li id={index} key={Math.floor(Math.random(index))} onClick={check}>
                 {arr}
               </li>
             ))}
           </ol>
-          <button onClick={next}>next</button>
+          {validate &&
+          <button className="next" onClick={next}>Next</button>
+          }
         </div>
       ) : (
         <End score={score} />
@@ -55,15 +58,17 @@ function Main() {
   );
 
   function check(e) {
+    setValidate(true)
     e.preventDefault();
     let value = e.target.innerHTML;
     console.log("test", e.target);
 
-    if (value === country.name) {
+    if (value !== country.name) {
       // setScore((prevState) => prevState + 1);
-      e.target.style.color = "green";
-    } else {
       e.target.style.color = "red";
+    } else {
+      e.target.style.color = "green";
+      // setScore(prevState => prevState+1)
       // color.style.color = "red";
     }
   }
@@ -74,6 +79,7 @@ function Main() {
       x[i].style.color = "#6066d0";
     }
     setGame((prevState) => prevState + 1);
+    setValidate(false);
   }
 }
 
