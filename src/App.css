@@ -95,5 +95,37 @@ body {
   font-size: 18px;
   line-height: 27px;
   color: white;
-  outline:none;
+  outline: none;
+}
+
+/* result page */
+.end h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  color: #1d355d;
+}
+
+.end p {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.end p sup {
+  color: green;
+}
+
+.end button {
+  margin-top: 30px;
+  width: 209px;
+  height: 62px;
+  border: 2px solid #1d355d;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
 }

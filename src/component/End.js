@@ -7,7 +7,7 @@ function End({score}) {
             <div className="end">
             <img src={winner} alt=""/>
             <h3>Results</h3>
-            <p>You got {score} correct answers</p>
+            <p>You got <sup> {score} </sup>correct answers</p>
             <button onClick={() => window.location.reload()}>Try Again</button>
             </div>
         </div>
