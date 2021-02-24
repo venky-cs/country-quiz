@@ -7,6 +7,7 @@ function Main() {
   const [country, setCountry] = useState({});
 
   const [game, setGame] = useState(0);
+  const [list, setList] = useState([])
   const [score, setScore] = useState(0);
   const [validate,setValidate] = useState(false);
 
@@ -18,31 +19,35 @@ function Main() {
     });
   }, [game]);
 
-  let listArray = [
-    state.length > 1 && state[randomNumber + 1].name,
-    state.length > 1 && state[randomNumber + 10].name,
-    state.length > 1 && state[randomNumber + 20].name,
-    country.name,
-  ];
+  function random(){
+     let li = [
+       state.length > 1 && state[randomNumber + 1].name,
+       state.length > 1 && state[randomNumber + 10].name,
+       state.length > 1 && state[randomNumber + 20].name,
+       country.name,
+     ];
 
-  const shuffleArray = (arr) => {
-    for (let i = 0; i < arr.length; i++) {
-      let rand = Math.floor(Math.random() * arr.length);
+     for (let i=0; i<li.length; i++){
+       let rand = Math.floor(Math.random() * li.length);
+       [li[i], li[rand]] = [li[rand], li[i]];
+     }
 
-      [arr[i], arr[rand]] = [arr[rand], arr[i]];
-    }
-    return arr;
-  };
+     return setList(li)
+  }
+
+  useEffect(async() => {
+    await random();
+    console.log(country)
+  }, [state,country])
   return (
     <>
       {game < 5 ? (
         <div className="section">
-          {console.log(state, country)}
+          {/* {console.log(state, country)} */}
           <h3>{country.capital} is the capital of</h3>
           <ol type="A">
-            {/* {console.log("Test",shuffleArray(listArray))} */}
-            {shuffleArray(listArray).map((arr, index) => (
-              <li id={index} key={Math.floor(Math.random(index))} onClick={check}>
+            {list.map((arr, index) => (
+              <li id={index} key={index} onClick={check}>
                 {arr}
               </li>
             ))}
@@ -64,11 +69,11 @@ function Main() {
     console.log("test", e.target);
 
     if (value !== country.name) {
-      // setScore((prevState) => prevState + 1);
+      setScore((prevState) => prevState + 1);
       e.target.style.color = "red";
     } else {
       e.target.style.color = "green";
-      // setScore(prevState => prevState+1)
+      setScore(prevState => prevState+1)
       // color.style.color = "red";
     }
   }
