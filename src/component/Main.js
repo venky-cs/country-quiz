@@ -52,9 +52,11 @@ function Main() {
               </li>
             ))}
           </ol>
-          {validate &&
-          <button className="next" onClick={next}>Next</button>
-          }
+          {validate && (
+            <button className="next" onClick={next}>
+              Next
+            </button>
+          )}
         </div>
       ) : (
         <End score={score} />
@@ -69,7 +71,6 @@ function Main() {
     console.log("test", e.target);
 
     if (value !== country.name) {
-      setScore((prevState) => prevState + 1);
       e.target.style.color = "red";
     } else {
       e.target.style.color = "green";
