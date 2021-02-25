@@ -38,7 +38,7 @@ function Main() {
 
   useEffect(async() => {
     await random();
-    console.log(country)
+    // console.log(country)
   }, [state,country])
   return (
     <>
@@ -70,22 +70,20 @@ function Main() {
     e.preventDefault();
     setClick(false)
     let value = e.target.innerHTML;
-    console.log("test", e.target);
+    // console.log("test", e.target);
 
     if (value !== country.name) {
       e.target.style.color = "red";
     } else {
       e.target.style.color = "green";
       setScore(prevState => prevState+1)
-      // color.style.color = "red";
     }
     let x = document.querySelectorAll("li");
     for (let i = 0; i < x.length; i++) {
       if(x[i].innerHTML === country.name){
-        console.log(x[i]);
+        // console.log(x[i]);
         x[i].style.color= "green";
       }
-      // x[i].style.color = "#6066d0";
     }
   }
 
@@ -93,7 +91,7 @@ function Main() {
     setClick(true)
     let x = document.querySelectorAll("li");
     for (let i = 0; i < x.length; i++) {
-      x[i].style.color = "#6066d0";
+      x[i].style ={color:"#6066d0",hover:"white"};
     }
     setGame((prevState) => prevState + 1);
     setValidate(false);
