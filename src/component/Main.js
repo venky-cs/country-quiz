@@ -79,6 +79,14 @@ function Main() {
       setScore(prevState => prevState+1)
       // color.style.color = "red";
     }
+    let x = document.querySelectorAll("li");
+    for (let i = 0; i < x.length; i++) {
+      if(x[i].innerHTML === country.name){
+        console.log(x[i]);
+        x[i].style.color= "green";
+      }
+      // x[i].style.color = "#6066d0";
+    }
   }
 
   function next() {
