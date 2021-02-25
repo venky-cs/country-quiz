@@ -9,6 +9,7 @@ function Main() {
   const [game, setGame] = useState(0);
   const [list, setList] = useState([])
   const [score, setScore] = useState(0);
+  const [click,setClick]=useState(true);
   const [validate,setValidate] = useState(false);
 
   let randomNumber = Math.floor(Math.random(5) * 200);
@@ -47,7 +48,7 @@ function Main() {
           <h3>{country.capital} is the capital of</h3>
           <ol type="A">
             {list.map((arr, index) => (
-              <li id={index} key={index} onClick={check}>
+              <li id={index} key={index} onClick={click ? check : null}>
                 {arr}
               </li>
             ))}
@@ -67,6 +68,7 @@ function Main() {
   function check(e) {
     setValidate(true)
     e.preventDefault();
+    setClick(false)
     let value = e.target.innerHTML;
     console.log("test", e.target);
 
@@ -80,6 +82,7 @@ function Main() {
   }
 
   function next() {
+    setClick(true)
     let x = document.querySelectorAll("li");
     for (let i = 0; i < x.length; i++) {
       x[i].style.color = "#6066d0";
