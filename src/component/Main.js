@@ -65,8 +65,8 @@ function Main() {
             </div>
           ) : (
             <div className="section">
-              {console.log(country)}
-              <img src={country.flag} alt="" />
+              {/* {console.log(country)} */}
+              <img className="flag" src={country.flag} alt="" />
               <h3>
                 which country does this flag
                 <br /> belong to?
