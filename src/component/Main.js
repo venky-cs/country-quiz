@@ -7,10 +7,12 @@ function Main() {
   const [country, setCountry] = useState({});
 
   const [game, setGame] = useState(0);
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
   const [score, setScore] = useState(0);
-  const [click,setClick]=useState(true);
-  const [validate,setValidate] = useState(false);
+  const [click, setClick] = useState(true);
+  const [validate, setValidate] = useState(false);
+
+  const [change, setChange] = useState(false);
 
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
@@ -20,45 +22,70 @@ function Main() {
     });
   }, [game]);
 
-  function random(){
-     let li = [
-       state.length > 1 && state[randomNumber + 1].name,
-       state.length > 1 && state[randomNumber + 10].name,
-       state.length > 1 && state[randomNumber + 20].name,
-       country.name,
-     ];
+  function random() {
+    let li = [
+      state.length > 1 && state[randomNumber + 1].name,
+      state.length > 1 && state[randomNumber + 10].name,
+      state.length > 1 && state[randomNumber + 20].name,
+      country.name,
+    ];
 
-     for (let i=0; i<li.length; i++){
-       let rand = Math.floor(Math.random() * li.length);
-       [li[i], li[rand]] = [li[rand], li[i]];
-     }
+    for (let i = 0; i < li.length; i++) {
+      let rand = Math.floor(Math.random() * li.length);
+      [li[i], li[rand]] = [li[rand], li[i]];
+    }
 
-     return setList(li)
+    return setList(li);
   }
 
-  useEffect(async() => {
+  useEffect(async () => {
     await random();
     // console.log(country)
-  }, [state,country])
+  }, [state, country]);
   return (
     <>
       {game < 5 ? (
-        <div className="section">
-          {/* {console.log(state, country)} */}
-          <h3>{country.capital} is the capital of</h3>
-          <ol type="A">
-            {list.map((arr, index) => (
-              <li id={index} key={index} onClick={click ? check : null}>
-                {arr}
-              </li>
-            ))}
-          </ol>
-          {validate && (
-            <button className="next" onClick={next}>
-              Next
-            </button>
+        <>
+          {change ? (
+            <div className="section">
+              {/* {console.log(state, country)} */}
+              <h3>{country.capital} is the capital of</h3>
+              <ol type="A">
+                {list.map((arr, index) => (
+                  <li id={index} key={index} onClick={click ? check : null}>
+                    {arr}
+                  </li>
+                ))}
+              </ol>
+              {validate && (
+                <button className="next" onClick={next}>
+                  Next
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="section">
+              {console.log(country)}
+              <img src={country.flag} alt="" />
+              <h3>
+                which country does this flag
+                <br /> belong to?
+              </h3>
+              <ol type="A">
+                {list.map((arr, index) => (
+                  <li id={index} key={index} onClick={click ? check : null}>
+                    {arr}
+                  </li>
+                ))}
+              </ol>
+              {validate && (
+                <button className="next" onClick={next}>
+                  Next
+                </button>
+              )}
+            </div>
           )}
-        </div>
+        </>
       ) : (
         <End score={score} />
       )}
@@ -66,9 +93,9 @@ function Main() {
   );
 
   function check(e) {
-    setValidate(true)
+    setValidate(true);
     e.preventDefault();
-    setClick(false)
+    setClick(false);
     let value = e.target.innerHTML;
     // console.log("test", e.target);
 
@@ -76,25 +103,26 @@ function Main() {
       e.target.style.color = "red";
     } else {
       e.target.style.color = "green";
-      setScore(prevState => prevState+1)
+      setScore((prevState) => prevState + 1);
     }
     let x = document.querySelectorAll("li");
     for (let i = 0; i < x.length; i++) {
-      if(x[i].innerHTML === country.name){
+      if (x[i].innerHTML === country.name) {
         // console.log(x[i]);
-        x[i].style.color= "green";
+        x[i].style.color = "green";
       }
     }
   }
 
   function next() {
-    setClick(true)
+    setClick(true);
     let x = document.querySelectorAll("li");
     for (let i = 0; i < x.length; i++) {
-      x[i].style ={color:"#6066d0",hover:"white"};
+      x[i].style = { color: "#6066d0", hover: "white" };
     }
     setGame((prevState) => prevState + 1);
     setValidate(false);
+    setChange((prevState) => !prevState);
   }
 }
 
