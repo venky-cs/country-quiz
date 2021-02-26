@@ -4,6 +4,7 @@ import Main from "./component/Main"
 
 function App() {
   return (
+    <>
     <div className="app">
       <div className="main">
         <div className="heading">
@@ -13,6 +14,10 @@ function App() {
           <Main />
       </div>
     </div>
+      <footer>
+        <p>created by venky -devchallenges.io</p>
+      </footer>
+    </>
   );
 }
 

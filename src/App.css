@@ -139,3 +139,13 @@ body {
   line-height: 27px;
   outline: none;
 }
+
+footer p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color:white;
+  text-align: center;
+  position: relative;
+  bottom:50px;
+}
