@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import End from "./End";
 
+import { BarLoader, RotateLoader, FadeLoader } from "react-spinners";
+
 function Main() {
   const [state, setState] = useState([]);
   const [country, setCountry] = useState({});
@@ -44,50 +46,56 @@ function Main() {
   }, [state, country]);
   return (
     <>
-      {game < 5 ? (
+      {list === [ ] ? (
+        <FadeLoader loading />
+      ) : (
         <>
-          {change ? (
-            <div className="section">
-              {/* {console.log(state, country)} */}
-              <h3>{country.capital} is the capital of</h3>
-              <ol type="A">
-                {list.map((arr, index) => (
-                  <li id={index} key={index} onClick={click ? check : null}>
-                    {arr}
-                  </li>
-                ))}
-              </ol>
-              {validate && (
-                <button className="next" onClick={next}>
-                  Next
-                </button>
+          {game < 5 ? (
+            <>
+              {change ? (
+                <div className="section">
+                  {/* {console.log(state, country)} */}
+                  <h3>{country.capital} is the capital of</h3>
+                  <ol type="A">
+                    {list.map((arr, index) => (
+                      <li id={index} key={index} onClick={click ? check : null}>
+                        {arr}
+                      </li>
+                    ))}
+                  </ol>
+                  {validate && (
+                    <button className="next" onClick={next}>
+                      Next
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div className="section">
+                  {/* {console.log(country)} */}
+                  <img className="flag" src={country.flag} alt="" />
+                  <h3>
+                    which country does this flag
+                    <br /> belong to?
+                  </h3>
+                  <ol type="A">
+                    {list.map((arr, index) => (
+                      <li id={index} key={index} onClick={click ? check : null}>
+                        {arr}
+                      </li>
+                    ))}
+                  </ol>
+                  {validate && (
+                    <button className="next" onClick={next}>
+                      Next
+                    </button>
+                  )}
+                </div>
               )}
-            </div>
+            </>
           ) : (
-            <div className="section">
-              {/* {console.log(country)} */}
-              <img className="flag" src={country.flag} alt="" />
-              <h3>
-                which country does this flag
-                <br /> belong to?
-              </h3>
-              <ol type="A">
-                {list.map((arr, index) => (
-                  <li id={index} key={index} onClick={click ? check : null}>
-                    {arr}
-                  </li>
-                ))}
-              </ol>
-              {validate && (
-                <button className="next" onClick={next}>
-                  Next
-                </button>
-              )}
-            </div>
+            <End score={score} />
           )}
         </>
-      ) : (
-        <End score={score} />
       )}
     </>
   );
