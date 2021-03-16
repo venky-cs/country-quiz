@@ -46,13 +46,11 @@ function Main() {
   }, [state, country]);
   return (
     <>
-      {list === [ ] ? (
-        <FadeLoader loading />
-      ) : (
         <>
           {game < 5 ? (
             <>
               {change ? (
+
                 <div className="section">
                   {/* {console.log(state, country)} */}
                   <h3>{country.capital} is the capital of</h3>
@@ -96,7 +94,6 @@ function Main() {
             <End score={score} />
           )}
         </>
-      )}
     </>
   );
 
