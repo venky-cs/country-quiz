@@ -31,12 +31,12 @@ body {
   overflow: hidden;
 }
 .heading img {
-  width: 100px;
+  width: 80px;
 }
 .heading .title {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 32px;
   text-transform: uppercase;
   color: #f2f2f2;
 }
@@ -47,7 +47,7 @@ body {
 .section h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
   color: #2f527b;
 }
@@ -64,13 +64,14 @@ body {
   margin: 20px auto;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   color: #6066d0;
   padding-left: 3rem;
+  padding-top: 8px;
   cursor: pointer;
 }
 .section ol li::marker {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .section ol li:hover {
@@ -91,7 +92,7 @@ body {
   float: right;
   margin-right: 30px;
   width: 116px;
-  height: 56px;
+  height: 46px;
   background: #f9a826;
   box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
   border-radius: 12px;
@@ -107,7 +108,7 @@ body {
 .end h3 {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 40px;
   line-height: 72px;
   color: #1d355d;
 }
@@ -115,7 +116,7 @@ body {
 .end p {
   font-family: "Poppins", sans-serif;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 27px;
 }
 
@@ -129,7 +130,7 @@ body {
 
 .end button {
   margin-top: 30px;
-  width: 209px;
+  width: 200px;
   height: 62px;
   border: 2px solid #1d355d;
   border-radius: 12px;
@@ -160,7 +161,8 @@ img.flag {
   margin: 10px 25px;
 }
 
-@media (max-width:500px) {
+
+@media only screen and (max-width:500px) {
   .heading img{
     width: 80px;
   }
