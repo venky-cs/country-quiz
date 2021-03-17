@@ -140,18 +140,16 @@ body {
   line-height: 27px;
   outline: none;
 }
-footer{
-  position: absolute;
-  bottom:0;
-  width: 100%;
-}
+
 footer p {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: white;
   text-align: center;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding:25px;
 }
 
@@ -164,9 +162,10 @@ img.flag {
 }
 
 @media only screen and (max-width:1024px) {
- 
+  footer p {
+    position: relative;
+  }
 }
-
 
 @media only screen and (max-width:500px) {
   .heading img{

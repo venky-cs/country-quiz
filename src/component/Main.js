@@ -53,40 +53,47 @@ function Main() {
 
                 <div className="section">
                   {/* {console.log(state, country)} */}
+                  {country.capital ?
+                  <>
                   <h3>{country.capital} is the capital of</h3>
                   <ol type="A">
-                    {country.capital ? list.map((arr, index) => (
+                    {list.map((arr, index) => (
                       <li id={index} key={index} onClick={click ? check : null}>
                         {arr}
                       </li>
-                    )) : <h3>Loading...</h3>}
+                    ))}
                   </ol>
                   {validate && (
                     <button className="next" onClick={next}>
                       Next
                     </button>
                   )}
+                  </>: <h3>Loading...</h3>}
                 </div>
               ) : (
                 <div className="section">
                   {/* {console.log(country)} */}
+                  {country.flag ?
+                  <>
                   <img className="flag" src={country.flag} alt="" />
                   <h3>
                     which country does this flag
                     <br /> belong to?
                   </h3>
                   <ol type="A">
-                    { country.flag ? list.map((arr, index) => (
+                    { list.map((arr, index) => (
                       <li id={index} key={index} onClick={click ? check : null}>
                         {arr}
                       </li>
-                    )):<h3>Loading...</h3>}
+                    ))}
                   </ol>
                   {validate && (
                     <button className="next" onClick={next}>
                       Next
                     </button>
                   )}
+                  </>:<h3>Loading...</h3>
+}
                 </div>
               )}
             </>
@@ -128,7 +135,7 @@ function Main() {
     setGame((prevState) => prevState + 1);
     setValidate(false);
     setChange((prevState) => !prevState);
-    setCountry(false)
+    setCountry({})
   }
 }
 
