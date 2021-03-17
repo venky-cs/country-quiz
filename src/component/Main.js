@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import End from "./End";
 
-import { BarLoader, RotateLoader, FadeLoader } from "react-spinners";
+import { PacmanLoader } from "react-spinners";
 
 function Main() {
   const [state, setState] = useState([]);
@@ -44,63 +44,83 @@ function Main() {
     await random();
     // console.log(country)
   }, [state, country]);
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setInterval(() => {
+      setLoading(true);
+    }, [5000]);
+  }, [loading]);
   return (
     <>
-        <>
-          {game < 5 ? (
-            <>
-              {change ? (
-
-                <div className="section">
-                  {/* {console.log(state, country)} */}
-                  {country.capital ?
+      <>
+        {game < 5 ? (
+          <>
+            {change ? (
+              <div className="section">
+                {/* {console.log(state, country)} */}
+                {country.capital && loading ? (
                   <>
-                  <h3>{country.capital} is the capital of</h3>
-                  <ol type="A">
-                    {list.map((arr, index) => (
-                      <li id={index} key={index} onClick={click ? check : null}>
-                        {arr}
-                      </li>
-                    ))}
-                  </ol>
-                  {validate && (
-                    <button className="next" onClick={next}>
-                      Next
-                    </button>
-                  )}
-                  </>: <h3>Loading...</h3>}
-                </div>
-              ) : (
-                <div className="section">
-                  {/* {console.log(country)} */}
-                  {country.flag ?
+                    <h3>{country.capital} is the capital of</h3>
+                    <ol type="A">
+                      {list.map((arr, index) => (
+                        <li
+                          id={index}
+                          key={index}
+                          onClick={click ? check : null}
+                        >
+                          {arr}
+                        </li>
+                      ))}
+                    </ol>
+                    {validate && (
+                      <button className="next" onClick={next}>
+                        Next
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <PacmanLoader />
+                )}
+              </div>
+            ) : (
+              <div className="section">
+                {/* {console.log(country)} */}
+                {country.flag && loading ? (
                   <>
-                  <img className="flag" src={country.flag} alt="" />
-                  <h3>
-                    which country does this flag
-                    <br /> belong to?
-                  </h3>
-                  <ol type="A">
-                    { list.map((arr, index) => (
-                      <li id={index} key={index} onClick={click ? check : null}>
-                        {arr}
-                      </li>
-                    ))}
-                  </ol>
-                  {validate && (
-                    <button className="next" onClick={next}>
-                      Next
-                    </button>
-                  )}
-                  </>:<h3>Loading...</h3>
-}
-                </div>
-              )}
-            </>
-          ) : (
-            <End score={score} />
-          )}
-        </>
+                    <img className="flag" src={country.flag} alt="" />
+                    <h3>
+                      which country does this flag
+                      <br /> belong to?
+                    </h3>
+                    <ol type="A">
+                      {list.map((arr, index) => (
+                        <li
+                          id={index}
+                          key={index}
+                          onClick={click ? check : null}
+                        >
+                          {arr}
+                        </li>
+                      ))}
+                    </ol>
+                    {validate && (
+                      <button className="next" onClick={next}>
+                        Next
+                      </button>
+                    )}
+                  </>
+                ) : (
+                  <PacmanLoader />
+                )}
+              </div>
+            )}
+          </>
+        ) : (
+          <End score={score} />
+        )}
+      </>
     </>
   );
 
@@ -136,6 +156,7 @@ function Main() {
     setValidate(false);
     setChange((prevState) => !prevState);
     setCountry({})
+    setLoading(false);
   }
 }
 
