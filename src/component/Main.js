@@ -55,11 +55,11 @@ function Main() {
                   {/* {console.log(state, country)} */}
                   <h3>{country.capital} is the capital of</h3>
                   <ol type="A">
-                    {list.map((arr, index) => (
+                    {country.capital ? list.map((arr, index) => (
                       <li id={index} key={index} onClick={click ? check : null}>
                         {arr}
                       </li>
-                    ))}
+                    )) : <h3>Loading...</h3>}
                   </ol>
                   {validate && (
                     <button className="next" onClick={next}>
@@ -76,11 +76,11 @@ function Main() {
                     <br /> belong to?
                   </h3>
                   <ol type="A">
-                    {list.map((arr, index) => (
+                    { country.flag ? list.map((arr, index) => (
                       <li id={index} key={index} onClick={click ? check : null}>
                         {arr}
                       </li>
-                    ))}
+                    )):<h3>Loading...</h3>}
                   </ol>
                   {validate && (
                     <button className="next" onClick={next}>
@@ -128,6 +128,7 @@ function Main() {
     setGame((prevState) => prevState + 1);
     setValidate(false);
     setChange((prevState) => !prevState);
+    setCountry(false)
   }
 }
 
