@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import End from "./End";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import End from './End';
 
-import { PacmanLoader } from "react-spinners";
+import { PacmanLoader } from 'react-spinners';
 
 function Main() {
   const [state, setState] = useState([]);
@@ -18,7 +18,7 @@ function Main() {
 
   let randomNumber = Math.floor(Math.random(5) * 200);
   useEffect(() => {
-    axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
+    axios.get('https://restcountries.eu/rest/v2/all').then((res) => {
       setState(res.data);
       setCountry(res.data[randomNumber]);
     });
@@ -132,30 +132,30 @@ function Main() {
     // console.log("test", e.target);
 
     if (value !== country.name) {
-      e.target.style.color = "red";
+      e.target.style.color = 'red';
     } else {
-      e.target.style.color = "green";
+      e.target.style.color = 'green';
       setScore((prevState) => prevState + 1);
     }
-    let x = document.querySelectorAll("li");
+    let x = document.querySelectorAll('li');
     for (let i = 0; i < x.length; i++) {
       if (x[i].innerHTML === country.name) {
         // console.log(x[i]);
-        x[i].style.color = "green";
+        x[i].style.color = 'green';
       }
     }
   }
 
   function next() {
     setClick(true);
-    let x = document.querySelectorAll("li");
+    let x = document.querySelectorAll('li');
     for (let i = 0; i < x.length; i++) {
-      x[i].style = { color: "#6066d0", hover: "white" };
+      x[i].style = { color: '#6066d0', hover: 'white' };
     }
     setGame((prevState) => prevState + 1);
     setValidate(false);
     setChange((prevState) => !prevState);
-    setCountry({})
+    setCountry({});
     setLoading(false);
   }
 }

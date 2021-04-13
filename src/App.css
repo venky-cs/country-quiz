@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@500;700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -34,7 +34,7 @@ body {
   width: 80px;
 }
 .heading .title {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 32px;
   text-transform: uppercase;
@@ -45,7 +45,7 @@ body {
   bottom: 40px;
 }
 .section h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 20px;
   text-align: center;
@@ -62,7 +62,7 @@ body {
   box-sizing: border-box;
   border-radius: 12px;
   margin: 20px auto;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 16px;
   color: #6066d0;
@@ -96,7 +96,7 @@ body {
   background: #f9a826;
   box-shadow: 0px 2px 4px rgba(252, 168, 47, 0.4);
   border-radius: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
@@ -106,7 +106,7 @@ body {
 
 /* result page */
 .end h3 {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 40px;
   line-height: 72px;
@@ -114,7 +114,7 @@ body {
 }
 
 .end p {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: normal;
   font-size: 16px;
   line-height: 27px;
@@ -134,7 +134,7 @@ body {
   height: 62px;
   border: 2px solid #1d355d;
   border-radius: 12px;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
@@ -142,7 +142,7 @@ body {
 }
 
 footer p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 14px;
   color: white;
@@ -150,7 +150,7 @@ footer p {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding:25px;
+  padding: 25px;
 }
 
 img.flag {
@@ -161,29 +161,34 @@ img.flag {
   margin: 10px 25px;
 }
 
-@media only screen and (max-width:1024px) {
+@media only screen and (max-width: 1024px) {
   footer p {
     position: relative;
   }
 }
 
-@media only screen and (max-width:500px) {
-  .heading img{
+@media only screen and (max-width: 500px) {
+  .heading img {
     width: 80px;
   }
-  .app .main{
+  .app .main {
     width: 330px;
   }
-  .heading .title,.section h3,.end h3{
+  .heading .title,
+  .section h3,
+  .end h3 {
     font-size: 20px;
   }
-  .section ol li{
+  .section ol li {
     width: 300px;
     height: 55px;
     padding-top: 10px;
   }
-  .section ol li,.next,.end p,.end button,.section ol li::marker{
+  .section ol li,
+  .next,
+  .end p,
+  .end button,
+  .section ol li::marker {
     font-size: 14px;
   }
-  
 }
